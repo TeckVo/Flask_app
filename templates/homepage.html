@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vehicle routing</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    </head> 
+    
+    <body>
+        <h1 class="text-center">Vehicle Routing with Delivery Attempt Predictors</h1>
+            
+        <form class="p-3" action='/dataset' method="POST" enctype="multipart/form-data">
+            <input class="btn btn-primary mt-3" type="submit" name="action" value="Upload Data">
+            <input class="btn btn-primary mt-3" type="submit" name="action" value="Default Data">
+            
+        </form>
+        {% if plot_url3 %}
+            
+            <img src="{{url_for('data_set')}}" calss="image" height="400" width="400">
+            
+        {% endif %} 
+    
+             <a herl="{{url_for('data_set')}}"><a/>
+             
+          
+        <form class="p-3 text-center" action='/defaul/smallscaledata' method="POST" enctype="multipart/form-data">
+            <label for="smallscale"><b>Small Scale Data</b></label>
+            <br><br>
+            <span>Number of Vehicle:<input type="number" name="vehicle", placeholder="20"></span>
+            
+            <span>Capacity:<input type="number" name="capacity", placeholder="Enter capacity in integer number"></span>
+            <br><br>
+            <input class="btn btn-primary mt-3" type="submit" name="action" value="Optimal Workload">
+            <input class="btn btn-primary mt-3" type="submit"  name="action" value="Failure Probability"> 
+            <input class="btn btn-primary mt-3" type="submit"  name="action" value="Total Cost"> 
+            <br><br>    
+        </form>
+        <b>Optimal Workload:</b> <output  style="font-size:18px" form="pressure-form", name="result" for ="slider">{{result1}}</output>  
+        <br><br>
+        {% if plot_url4 %}
+            
+            <img src={{plot_url4}} calss="image" height="400" width="400">
+            
+        {% endif %}  
+        
+        {% if plot_url5 %}
+            <table border="1" style="width:30%">
+                <tr>
+                    <th></th>
+                    <th>Optimal</th>
+                    <th>Baseline</th>
+                    <th>Differ</th>
+                </tr>
+                <tr>
+                    <th>Travel Cost</th>
+                    <td>{{travelcost_op}}</td>
+                    <td>{{travelcost_bas}}</td>
+                    <td>{{travelcost_diff}}</td>
+                </tr>
+                
+                 <tr>
+                     <th>Failure Cost</th>
+                     <td>{{failurecost_op}}</td>
+                     <td>{{failurecost_bas}}</td>
+                     <td>{{failurecost_diff}}</td>
+                 </tr>
+                 
+                  <tr>
+                      <th>Delivery Cost</th>
+                      <td>{{delivercost_op}}</td>
+                      <td>{{delivercost_bas}}</td>
+                      <td>{{delivercost_diff}}</td>
+                  </tr>
+             </table>
+             <br><br>
+                 <img src={{plot_url5}} calss="image" height="400" width="400">   
+             <br><br>
+                 <span><a href={{file2}}>download_result_data</a></span>
+                
+                 <span><a href="{{url_for('route_map_small')}}" target="_blank">click to launch map route</a></span>       
+        {% endif %}  
+        
+        <br><br>
+        
+        
+        <form class="p-3 text-center" action='/defaul/largescaledata' method="POST" enctype="multipart/form-data">
+            <label for="largescale"><b>Large Scale Data</b></label>
+            <br><br>
+            <span>Number of Vehicle:<input type="number" name="vehicle", placeholder="20"></span>
+            
+            <span>Capacity:<input type="number" name="capacity", placeholder="Enter capacity in integer number"></span>
+            <br><br>
+            <input class="btn btn-primary mt-3" type="submit" name="action" value="Optimal Workload">
+            <input class="btn btn-primary mt-3" type="submit"  name="action" value="Failure Probability"> 
+            <input class="btn btn-primary mt-3" type="submit"  name="action" value="Total Cost"> 
+            <br><br> 
+        </form>
+        <b>Optimal Workload:</b> <output  style="font-size:18px" form="pressure-form", name="result" for ="slider">{{result}}</output>
+        <br><br>
+         
+        {% if plot_url1 %}
+            
+            <img src={{plot_url1}} calss="image" height="400" width="400">
+           
+            
+        {% endif %}  
+       
+        {% if plot_url2 %}
+            <table border="1" style="width:30%">
+                <tr>
+                    <th></th>
+                    <th>Optimal</th>
+                    <th>Baseline</th>
+                    <th>Differ</th>
+                </tr>
+                <tr>
+                    <th>Travel Cost</th>
+                    <td>{{travelcost_op}}</td>
+                    <td>{{travelcost_bas}}</td>
+                    <td>{{travelcost_diff}}</td>
+                </tr>
+                
+                 <tr>
+                     <th>Failure Cost</th>
+                     <td>{{failurecost_op}}</td>
+                     <td>{{failurecost_bas}}</td>
+                     <td>{{failurecost_diff}}</td>
+                 </tr>
+                 
+                  <tr>
+                      <th>Delivery Cost</th>
+                      <td>{{delivercost_op}}</td>
+                      <td>{{delivercost_bas}}</td>
+                      <td>{{delivercost_diff}}</td>
+                  </tr>
+             </table>
+             <br><br>
+                 <img src={{plot_url2}} calss="image" height="400" width="400">   
+             <br><br>
+                 <span><a href={{file}}>download_result_data</a></span>
+                
+                 <span><a href="{{url_for('route_map')}}" target="_blank">click to launch map route</a></span>       
+        {% endif %}  
+        
+         
+    
+                  
+
+    
+    </body>
+</html>
+   
+
+        
+        
+        
+        
+
+           
+            
+            
+                
+                    
+                    
+                
+            
+                
+       
+  
+     
+    
